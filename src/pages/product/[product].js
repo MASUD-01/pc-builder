@@ -1,4 +1,4 @@
-import RootLayout from "@/components/Layouts/RootLayout";
+import RootLayout from "../../components/Layouts/RootLayout";
 import { Card } from "antd";
 import Image from "next/image";
 import React from "react";
@@ -22,16 +22,17 @@ product.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/product");
+  const res = await fetch("https://assign-6server.vercel.app/products");
   const data = await res.json();
-  const paths = data?.map((product) => ({
+  const paths = data?.data?.map((product) => ({
     params: { product: product.id.toString() },
   }));
   return { paths, fallback: false };
 };
-export const getStaticProps = async (context) => {
-  const { params } = context;
-  const res = await fetch(`http://localhost:5000/product/${params.product}`);
+export const getStaticProps = async ({ params }) => {
+  const res = await fetch(
+    `https://assign-6server.vercel.app/products/${params.product}`
+  );
   const data = await res.json();
   return {
     props: {

@@ -1,4 +1,4 @@
-import { Col, Dropdown, Layout, Menu, Row, Space } from "antd";
+import { Col, Dropdown, Layout, Row } from "antd";
 const { Header, Content, Footer } = Layout;
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -16,22 +16,27 @@ const itemsMenu = [
   {
     id: 3,
     item: "RAM",
+    link: "/category",
   },
   {
     id: 4,
     item: "Power Supply unit",
+    link: "/category",
   },
   {
     id: 5,
     item: "Storage Device",
+    link: "/category",
   },
   {
     id: 6,
     item: "Monitor",
+    link: "/category",
   },
   {
     id: 7,
     item: "Others",
+    link: "/category",
   },
 ];
 const CategoryMenu = itemsMenu.map((item) => {
@@ -72,7 +77,7 @@ const RootLayout = ({ children }) => {
           <Col xs={8} sm={8} md={8} lg={8} xl={8}>
             {" "}
             <Link
-              href="/contact"
+              href="/pageBuilder/PageBuilder"
               style={{
                 color: "white",
                 backgroundColor: "#404040",

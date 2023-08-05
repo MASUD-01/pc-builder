@@ -12,6 +12,8 @@ const client = new MongoClient(uri, {
 });
 
 async function run(req, res) {
+  console.log(req.params, "parmas");
+  console.log(req.query, "query");
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
@@ -19,7 +21,6 @@ async function run(req, res) {
 
     const newsCollection = client.db("nextjs").collection("product");
     console.log("database connected");
-
     if (req.method === "GET") {
       const news = await newsCollection.find({}).toArray();
       res.send({ message: "success", status: 200, data: news });
